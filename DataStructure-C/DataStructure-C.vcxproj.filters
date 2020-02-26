@@ -24,5 +24,8 @@
     <ClCompile Include="KMPAlgorithm.c">
       <Filter>源文件\串</Filter>
     </ClCompile>
+    <ClCompile Include="KMPAlgorithm_2.c">
+      <Filter>源文件\串</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

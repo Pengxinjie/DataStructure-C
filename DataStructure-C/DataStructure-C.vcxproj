@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="KMPAlgorithm.c" />
+    <ClCompile Include="KMPAlgorithm_2.c" />
     <ClCompile Include="StrOperation.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
