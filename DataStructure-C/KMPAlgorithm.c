@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 typedef int Position;
+
 #define NotFound -1
 
 void BuildMatch(char* pattern, int* match)
