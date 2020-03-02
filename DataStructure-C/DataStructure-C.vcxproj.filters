@@ -16,6 +16,9 @@
     <Filter Include="源文件\串">
       <UniqueIdentifier>{4e168f54-f5fb-4a3f-b8b0-c45a1021c852}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\线性表">
+      <UniqueIdentifier>{661b1162-38bb-485a-9103-3b4932672ed4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StrOperation.c">
@@ -26,6 +29,12 @@
     </ClCompile>
     <ClCompile Include="KMPAlgorithm_2.c">
       <Filter>源文件\串</Filter>
+    </ClCompile>
+    <ClCompile Include="_ArrayList.c">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.c">
+      <Filter>源文件\线性表</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -140,7 +140,9 @@
   <ItemGroup>
     <ClCompile Include="KMPAlgorithm.c" />
     <ClCompile Include="KMPAlgorithm_2.c" />
+    <ClCompile Include="LinkedList.c" />
     <ClCompile Include="StrOperation.c" />
+    <ClCompile Include="_ArrayList.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
