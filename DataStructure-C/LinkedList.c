@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
 typedef int ElementType;
 
@@ -47,14 +48,20 @@ void InitListHead(void)
 	g_pEnd = g_pHead;
 }
 
-//遍历链表
-void PrintList(void)
-{
+//判空
+_Bool isEmpty(void) {
 	if (g_pHead->pNext == NULL)
 	{
 		printf("链表为空！");
-		return;
+		return true;
 	}
+}
+
+//遍历链表
+void PrintList(void)
+{
+	if (isEmpty() == true)
+		return;
 	//临时指针
 	struct Node* temp = g_pHead;
 	//直到没有下一个结点
@@ -112,8 +119,9 @@ void AddNodeIndex(int index, ElementType value)
 
 //删除首结点
 void DelFirstNode(void) {
-	if (NULL == g_pHead->pNext) {
-		printf("链表为空！");
+	//判空
+	if (true == isEmpty()) {
+		return;
 	}
 	else {
 		struct Node* pTemp = g_pHead->pNext;
@@ -125,8 +133,8 @@ void DelFirstNode(void) {
 
 //删除尾结点
 void DelTailNode(void) {
-	if (NULL == g_pHead->pNext) {
-		printf("链表为空！");
+	//判空
+	if (true == isEmpty()) {
 		return;
 	}
 	//只有一个结点
@@ -153,14 +161,14 @@ void DelTailNode(void) {
 }
 
 //删除指定结点
-void DelNodeIndex(int a) {
+void DelNodeIndex(int index) {
 	struct Node* ptmp = g_pHead;
-	struct Node* k;
-	if (NULL == g_pHead->pNext)
-	{
-		printf("空链表无需删除！\n");
+	struct Node* k;//临时存储
+	//判空
+	if (true == isEmpty()) {
 		return;
 	}
+	//只有一个结点
 	if (g_pHead == g_pEnd)
 	{
 		free(g_pHead);
@@ -169,14 +177,16 @@ void DelNodeIndex(int a) {
 		return;
 	}
 
-	for (int i = 1; i < a; i++)
+	//找到目标结点的前一个结点
+	for (int i = 1; i < index; i++)
 		ptmp = ptmp->pNext;
 	k = ptmp->pNext;
+	//目标结点的前一个结点指向目标结点的后一个结点
 	ptmp->pNext = ptmp->pNext->pNext;
 	free(k);
 }
 
-//链表清空
+//链表清空：遍历每一个结点，逐一释放
 void FreeList()
 {
 	//记录节点，防止头被破坏，丢内存
