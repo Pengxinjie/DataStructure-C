@@ -206,35 +206,38 @@ int main(void)
 	AddListTail(4);
 	AddListTail(5);
 
+	//遍历
+	PrintList();//结果：1 2 3 4 5
+
 	//头添加
 	AddListHead(100);
 
 	//遍历链表瞧瞧
-	PrintList();
+	PrintList();//结果：100 1 2 3 4 5
 
 	//任意位置添加节点
 	AddNodeIndex(1, 99);
 	
 	//再遍历瞧瞧
-	PrintList();
+	PrintList();//结果：99 100 1 2 3 4 5
 
 	//删除首结点
 	DelFirstNode();
 
 	//遍历
-	PrintList();
+	PrintList();//结果：100 1 2 3 4 5
 
 	//删除尾结点
 	DelTailNode();
 
 	//遍历
-	PrintList();
+	PrintList();//结果：100 1 2 3 4
 
 	//删除任意位置的结点
 	DelNodeIndex(1);
 
 	//遍历
-	PrintList();
+	PrintList();//结果：1 2 3 4
 
 	//释放整个链表
 	FreeList();
