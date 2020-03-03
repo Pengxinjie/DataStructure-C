@@ -84,7 +84,6 @@ void purge(ElementType* list) {
 
 				if (list[i] == list[j])
 					j--;
-
 				printf("这是调用的第%d次,这时候的i=%d,j=%d\n", temp++, i, j);
 			}
 		}
