@@ -36,6 +36,12 @@
     <ClCompile Include="LinkedList.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
+    <ClCompile Include="双向链表.c">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="单向循环链表.c">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h">

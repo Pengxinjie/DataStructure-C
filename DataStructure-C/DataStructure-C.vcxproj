@@ -143,6 +143,8 @@
     <ClCompile Include="LinkedList.c" />
     <ClCompile Include="StrOperation.c" />
     <ClCompile Include="_ArrayList.c" />
+    <ClCompile Include="单向循环链表.c" />
+    <ClCompile Include="双向链表.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
