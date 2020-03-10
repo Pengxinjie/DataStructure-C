@@ -112,5 +112,7 @@ int main(void) {
             printf("输入有误！");
         }
     }
+
     printf("已退出本程序！");
+    return 0;
 }
