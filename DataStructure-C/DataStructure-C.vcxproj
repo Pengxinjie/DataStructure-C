@@ -145,6 +145,7 @@
     <ClCompile Include="_ArrayList.c" />
     <ClCompile Include="单向循环链表.c" />
     <ClCompile Include="双向链表.c" />
+    <ClCompile Include="抽象数据类型实习.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
