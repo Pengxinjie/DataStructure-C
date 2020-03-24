@@ -146,6 +146,8 @@
     <ClCompile Include="单向循环链表.c" />
     <ClCompile Include="双向链表.c" />
     <ClCompile Include="抽象数据类型实习.c" />
+    <ClCompile Include="栈.c" />
+    <ClCompile Include="约瑟夫问题.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />

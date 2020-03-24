@@ -33,9 +33,6 @@
     <ClCompile Include="_ArrayList.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedList.c">
-      <Filter>源文件\线性表</Filter>
-    </ClCompile>
     <ClCompile Include="双向链表.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
@@ -43,6 +40,15 @@
       <Filter>源文件\线性表</Filter>
     </ClCompile>
     <ClCompile Include="抽象数据类型实习.c">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.c">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="约瑟夫问题.cpp">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="栈.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
   </ItemGroup>
