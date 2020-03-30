@@ -1,259 +1,290 @@
-//#include<stdio.h>
-//#include<stdlib.h>
-//#include<stdbool.h>
+//#include "stdio.h"    
+//#include "string.h"
+//#include "ctype.h"      
+//#include "stdlib.h"   
+//#include "io.h"  
+//#include "math.h"  
+//#include "time.h"
 //
-//typedef int ElementType;
+//#define OK 1
+//#define ERROR 0
+//#define TRUE 1
+//#define FALSE 0
 //
-////创建结点结构体
-//struct Node {
-//	ElementType a;
-//	struct Node* pNext;
-//};
+//#define MAXSIZE 20 /* 存储空间初始分配量 */
 //
-//struct Node* g_pHead = NULL;//头指针
-//struct Node* g_pEnd = NULL;//尾指针
+//typedef int Status;/* Status是函数的类型,其值是函数结果状态代码，如OK等 */
+//typedef int ElemType;/* ElemType类型根据实际情况而定，这里假设为int */
 //
-////创建一个节点
-//struct Node* CreatNode(ElementType value)
+//Status visit(ElemType c)
 //{
-//	struct Node* pTemp = (struct Node*)malloc(sizeof(struct Node));
-//	//节点成员赋值
-//	pTemp->a = value;
-//	pTemp->pNext = NULL;
-//
+//    printf("%d ", c);
+//    return OK;
 //}
 //
-////尾添加
-//void AddListTail(ElementType value)
+//typedef struct Node
 //{
-//	struct Node*pTemp=CreatNode(value);
-//	g_pEnd->pNext = pTemp;
-//	g_pEnd = pTemp;
-//}
+//    ElemType data;
+//    struct Node* next;
+//}Node;
+//typedef struct Node* LinkList; /* 定义LinkList */
 //
-////头添加
-//void AddListHead(ElementType value)
+///* 初始化顺序线性表 */
+//Status InitList(LinkList* L)
 //{
-//	struct Node* pTemp = CreatNode(value);
-//	//连接
-//	pTemp->pNext = g_pHead->pNext;
-//	g_pHead->pNext = pTemp;
+//    *L = (LinkList)malloc(sizeof(Node)); /* 产生头结点,并使L指向此头结点 */
+//    if (!(*L)) /* 存储分配失败 */
+//        return ERROR;
+//    (*L)->next = NULL; /* 指针域为空 */
+//
+//    return OK;
 //}
 //
-////链表空头初始化
-//void InitListHead(void)
+///* 初始条件：顺序线性表L已存在。操作结果：若L为空表，则返回TRUE，否则返回FALSE */
+//Status ListEmpty(LinkList L)
 //{
-//	g_pHead = (struct Node*)malloc(sizeof(struct Node));
-//	g_pHead->pNext = NULL;
-//	g_pEnd = g_pHead;
+//    if (L->next)
+//        return FALSE;
+//    else
+//        return TRUE;
 //}
 //
-////判空
-//_Bool isEmpty(void) {
-//	if (g_pHead->pNext == NULL)
-//	{
-//		printf("链表为空！");
-//		return true;
-//	}
-//}
-//
-////遍历链表
-//void PrintList(void)
+///* 初始条件：顺序线性表L已存在。操作结果：将L重置为空表 */
+//Status ClearList(LinkList* L)
 //{
-//	if (isEmpty() == true)
-//		return;
-//	//临时指针
-//	struct Node* temp = g_pHead;
-//	//直到没有下一个结点
-//	while (temp->pNext != NULL)
-//	{
-//		printf("%d  ", temp->pNext->a);
-//		//指向下一个
-//		temp = temp->pNext;
-//	}
-//	printf("\n");
+//    LinkList p, q;
+//    p = (*L)->next;           /*  p指向第一个结点 */
+//    while (p)                /*  没到表尾 */
+//    {
+//        q = p->next;
+//        free(p);
+//        p = q;
+//    }
+//    (*L)->next = NULL;        /* 头结点指针域为空 */
+//    return OK;
 //}
 //
-////查找任意位置节点
-//struct Node* SelectNode(int index)
+///* 初始条件：顺序线性表L已存在。操作结果：返回L中数据元素个数 */
+//int ListLength(LinkList L)
 //{
-//	struct Node* pTemp = g_pHead;
-//	for (int i = 1; i < index; i++)
-//	{
-//		pTemp = pTemp->pNext;
-//		if (pTemp == NULL)
-//		{
-//			printf("无此节点！\n");
-//			return NULL;
-//		}
-//	}
-//	return pTemp;
+//    int i = 0;
+//    LinkList p = L->next; /* p指向第一个结点 */
+//    while (p)
+//    {
+//        i++;
+//        p = p->next;
+//    }
+//    return i;
 //}
 //
-////任意位置添加节点
-//void AddNodeIndex(int index, ElementType value)
+///* 初始条件：顺序线性表L已存在，1≤i≤ListLength(L) */
+///* 操作结果：用e返回L中第i个数据元素的值 */
+//Status GetElem(LinkList L, int i, ElemType* e)
 //{
-//	struct Node* pTemp = g_pHead->pNext;
-//	if (pTemp->pNext == NULL)
-//	{
-//		printf("此链表无节点！");
-//		return;
-//	}
-//
-//	//找到要插入的位置
-//	pTemp = SelectNode(index);
-//
-//	if (pTemp != NULL)
-//	{
-//		struct Node* pt = CreatNode(value);
-//		if (pTemp->pNext == NULL) {
-//			AddListTail(value);
-//		}
-//		else {
-//			//先连后断
-//			pt->pNext = pTemp->pNext;
-//			pTemp->pNext = pt;
-//		}
-//	}
+//    int j;
+//    LinkList p;		/* 声明一结点p */
+//    p = L->next;		/* 让p指向链表L的第一个结点 */
+//    j = 1;		/*  j为计数器 */
+//    while (p && j < i)  /* p不为空或者计数器j还没有等于i时，循环继续 */
+//    {
+//        p = p->next;  /* 让p指向下一个结点 */
+//        ++j;
+//    }
+//    if (!p || j > i)
+//        return ERROR;  /*  第i个元素不存在 */
+//    *e = p->data;   /*  取第i个元素的数据 */
+//    return OK;
 //}
 //
-////删除首结点
-//void DelFirstNode(void) {
-//	//判空
-//	if (true == isEmpty()) {
-//		return;
-//	}
-//	else {
-//		struct Node* pTemp = g_pHead->pNext;
-//		g_pHead->pNext = g_pHead->pNext->pNext;
-//		//释放结点
-//		free(pTemp);
-//	}
-//}
-//
-////删除尾结点
-//void DelTailNode(void) {
-//	//判空
-//	if (true == isEmpty()) {
-//		return;
-//	}
-//	//只有一个结点
-//	if (g_pHead->pNext == g_pEnd) {
-//		free(g_pEnd);
-//		g_pHead->pNext = NULL;
-//		g_pEnd = g_pHead;
-//	}
-//	else {
-//		//找到尾结点的上一个
-//		struct Node* pTemp = g_pHead->pNext;
-//		while (pTemp->pNext != NULL)
-//		{
-//			if (g_pEnd == pTemp->pNext)
-//				break;
-//			pTemp = pTemp->pNext;
-//		}
-//		//现在是尾结点的前一个结点
-//		free(g_pEnd);
-//		g_pEnd = pTemp;
-//		g_pEnd->pNext = NULL;
-//	}
-//
-//}
-//
-////删除指定结点
-//void DelNodeIndex(int index) {
-//	struct Node* ptmp = g_pHead;
-//	struct Node* k;//临时存储
-//	//判空
-//	if (true == isEmpty()) {
-//		return;
-//	}
-//	//只有一个结点
-//	if (g_pHead == g_pEnd)
-//	{
-//		free(g_pHead);
-//		g_pHead = NULL;
-//		g_pEnd = NULL;
-//		return;
-//	}
-//
-//	//找到目标结点的前一个结点
-//	for (int i = 1; i < index; i++)
-//		ptmp = ptmp->pNext;
-//	k = ptmp->pNext;
-//	//目标结点的前一个结点指向目标结点的后一个结点
-//	ptmp->pNext = ptmp->pNext->pNext;
-//	free(k);
-//}
-//
-////链表清空：遍历每一个结点，逐一释放
-//void FreeList()
+///* 初始条件：顺序线性表L已存在 */
+///* 操作结果：返回L中第1个与e满足关系的数据元素的位序。 */
+///* 若这样的数据元素不存在，则返回值为0 */
+//int LocateElem(LinkList L, ElemType e)
 //{
-//	//记录节点，防止头被破坏，丢内存
-//	struct Node* pTemp = g_pHead;
+//    int i = 0;
+//    LinkList p = L->next;
+//    while (p)
+//    {
+//        i++;
+//        if (p->data == e) /* 找到这样的数据元素 */
+//            return i;
+//        p = p->next;
+//    }
 //
-//	while (pTemp)
-//	{
-//		struct Node* pt = pTemp;//记住pTemp的值
-//		pTemp = pTemp->pNext;//pTemp指向下一个节点
-//		free(pt);
-//	}
-//
-//	//头尾清空，下一次才能重新创建链表
-//	g_pHead = NULL;
-//	g_pEnd = NULL;
+//    return 0;
 //}
 //
-//int main(void)
+//
+///* 初始条件：顺序线性表L已存在,1≤i≤ListLength(L)， */
+///* 操作结果：在L中第i个位置之前插入新的数据元素e，L的长度加1 */
+//Status ListInsert(LinkList* L, int i, ElemType e)
 //{
-//	//初始化
-//	InitListHead();
+//    int j;
+//    LinkList p, s;
+//    p = *L;
+//    j = 1;
+//    while (p && j < i)     /* 寻找第i个结点 */
+//    {
+//        p = p->next;
+//        ++j;
+//    }
+//    if (!p || j > i)
+//        return ERROR;   /* 第i个元素不存在 */
+//    s = (LinkList)malloc(sizeof(Node));  /*  生成新结点(C语言标准函数) */
+//    s->data = e;
+//    s->next = p->next;      /* 将p的后继结点赋值给s的后继  */
+//    p->next = s;          /* 将s赋值给p的后继 */
+//    return OK;
+//}
 //
-//	//尾添加
-//	AddListTail(1);
-//	AddListTail(2);
-//	AddListTail(3);
-//	AddListTail(4);
-//	AddListTail(5);
+///* 初始条件：顺序线性表L已存在，1≤i≤ListLength(L) */
+///* 操作结果：删除L的第i个数据元素，并用e返回其值，L的长度减1 */
+//Status ListDelete(LinkList* L, int i, ElemType* e)
+//{
+//    int j;
+//    LinkList p, q;
+//    p = *L;
+//    j = 1;
+//    while (p->next && j < i)	/* 遍历寻找第i个元素 */
+//    {
+//        p = p->next;
+//        ++j;
+//    }
+//    if (!(p->next) || j > i)
+//        return ERROR;           /* 第i个元素不存在 */
+//    q = p->next;
+//    p->next = q->next;			/* 将q的后继赋值给p的后继 */
+//    *e = q->data;               /* 将q结点中的数据给e */
+//    free(q);                    /* 让系统回收此结点，释放内存 */
+//    return OK;
+//}
 //
-//	//遍历
-//	PrintList();//结果：1 2 3 4 5
+///* 初始条件：顺序线性表L已存在 */
+///* 操作结果：依次对L的每个数据元素输出 */
+//Status ListTraverse(LinkList L)
+//{
+//    LinkList p = L->next;
+//    while (p)
+//    {
+//        visit(p->data);
+//        p = p->next;
+//    }
+//    printf("\n");
+//    return OK;
+//}
 //
-//	//头添加
-//	AddListHead(100);
+///*  随机产生n个元素的值，建立带表头结点的单链线性表L（头插法） */
+//void CreateListHead(LinkList* L, int n)
+//{
+//    LinkList p;
+//    int i;
+//    srand(time(0));                         /* 初始化随机数种子 */
+//    *L = (LinkList)malloc(sizeof(Node));
+//    (*L)->next = NULL;                      /*  先建立一个带头结点的单链表 */
+//    for (i = 0; i < n; i++)
+//    {
+//        p = (LinkList)malloc(sizeof(Node)); /*  生成新结点 */
+//        p->data = rand() % 100 + 1;             /*  随机生成100以内的数字 */
+//        p->next = (*L)->next;
+//        (*L)->next = p;						/*  插入到表头 */
+//    }
+//}
 //
-//	//遍历链表瞧瞧
-//	PrintList();//结果：100 1 2 3 4 5
+///*  随机产生n个元素的值，建立带表头结点的单链线性表L（尾插法） */
+//void CreateListTail(LinkList* L, int n)
+//{
+//    LinkList p, r;
+//    int i;
+//    srand(time(0));                      /* 初始化随机数种子 */
+//    *L = (LinkList)malloc(sizeof(Node)); /* L为整个线性表 */
+//    r = *L;                                /* r为指向尾部的结点 */
+//    for (i = 0; i < n; i++)
+//    {
+//        p = (Node*)malloc(sizeof(Node)); /*  生成新结点 */
+//        p->data = rand() % 100 + 1;           /*  随机生成100以内的数字 */
+//        r->next = p;                        /* 将表尾终端结点的指针指向新结点 */
+//        r = p;                            /* 将当前的新结点定义为表尾终端结点 */
+//    }
+//    r->next = NULL;                       /* 表示当前链表结束 */
+//}
 //
-//	//任意位置添加节点
-//	AddNodeIndex(1, 99);
-//	
-//	//再遍历瞧瞧
-//	PrintList();//结果：99 100 1 2 3 4 5
+//int main()
+//{
+//    LinkList L;
+//    ElemType e;
+//    Status i;
+//    int j, k;
+//    i = InitList(&L);
+//    printf("初始化L后：ListLength(L)=%d\n", ListLength(L));
+//    for (j = 1; j <= 5; j++)
+//        i = ListInsert(&L, 1, j);
+//    printf("在L的表头依次插入1～5后：L.data=");
+//    ListTraverse(L);
 //
-//	//删除首结点
-//	DelFirstNode();
+//    printf("ListLength(L)=%d \n", ListLength(L));
+//    i = ListEmpty(L);
+//    printf("L是否空：i=%d(1:是 0:否)\n", i);
 //
-//	//遍历
-//	PrintList();//结果：100 1 2 3 4 5
+//    i = ClearList(&L);
+//    printf("清空L后：ListLength(L)=%d\n", ListLength(L));
+//    i = ListEmpty(L);
+//    printf("L是否空：i=%d(1:是 0:否)\n", i);
 //
-//	//删除尾结点
-//	DelTailNode();
+//    for (j = 1; j <= 10; j++)
+//        ListInsert(&L, j, j);
+//    printf("在L的表尾依次插入1～10后：L.data=");
+//    ListTraverse(L);
 //
-//	//遍历
-//	PrintList();//结果：100 1 2 3 4
+//    printf("ListLength(L)=%d \n", ListLength(L));
 //
-//	//删除任意位置的结点
-//	DelNodeIndex(1);
+//    ListInsert(&L, 1, 0);
+//    printf("在L的表头插入0后：L.data=");
+//    ListTraverse(L);
+//    printf("ListLength(L)=%d \n", ListLength(L));
 //
-//	//遍历
-//	PrintList();//结果：1 2 3 4
+//    GetElem(L, 5, &e);
+//    printf("第5个元素的值为：%d\n", e);
+//    for (j = 3; j <= 4; j++)
+//    {
+//        k = LocateElem(L, j);
+//        if (k)
+//            printf("第%d个元素的值为%d\n", k, j);
+//        else
+//            printf("没有值为%d的元素\n", j);
+//    }
 //
-//	//释放整个链表
-//	FreeList();
 //
-//	//over
+//    k = ListLength(L); /* k为表长 */
+//    for (j = k + 1; j >= k; j--)
+//    {
+//        i = ListDelete(&L, j, &e); /* 删除第j个数据 */
+//        if (i == ERROR)
+//            printf("删除第%d个数据失败\n", j);
+//        else
+//            printf("删除第%d个的元素值为：%d\n", j, e);
+//    }
+//    printf("依次输出L的元素：");
+//    ListTraverse(L);
 //
-//	system("pause");
-//	return 0;
+//    j = 5;
+//    ListDelete(&L, j, &e); /* 删除第5个数据 */
+//    printf("删除第%d个的元素值为：%d\n", j, e);
+//
+//    printf("依次输出L的元素：");
+//    ListTraverse(L);
+//
+//    i = ClearList(&L);
+//    printf("\n清空L后：ListLength(L)=%d\n", ListLength(L));
+//    CreateListHead(&L, 20);
+//    printf("整体创建L的元素(头插法)：");
+//    ListTraverse(L);
+//
+//    i = ClearList(&L);
+//    printf("\n删除L后：ListLength(L)=%d\n", ListLength(L));
+//    CreateListTail(&L, 20);
+//    printf("整体创建L的元素(尾插法)：");
+//    ListTraverse(L);
+//
+//
+//    return 0;
 //}

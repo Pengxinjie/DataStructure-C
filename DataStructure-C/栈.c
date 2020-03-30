@@ -82,7 +82,7 @@ void FreeList()
 	g_pHead = NULL;
 }
 
-int main(void)
+int main1(void)
 {
 	//≥ı ºªØ’ª
 	InitStackHead();

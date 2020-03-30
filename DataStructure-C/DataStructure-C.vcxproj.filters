@@ -19,6 +19,9 @@
     <Filter Include="源文件\线性表">
       <UniqueIdentifier>{661b1162-38bb-485a-9103-3b4932672ed4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\树">
+      <UniqueIdentifier>{49fcc960-6aeb-49dc-b89f-3f47c6618e86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StrOperation.c">
@@ -45,10 +48,13 @@
     <ClCompile Include="LinkedList.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
-    <ClCompile Include="约瑟夫问题.cpp">
+    <ClCompile Include="栈.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
-    <ClCompile Include="栈.c">
+    <ClCompile Include="顺序表.c">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="约瑟夫问题.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
   </ItemGroup>
