@@ -57,9 +57,18 @@
     <ClCompile Include="约瑟夫问题.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
+    <ClCompile Include="队列1.c">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="队列2.cpp">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkedList.h">
+    <ClInclude Include="队列1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="队列2.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

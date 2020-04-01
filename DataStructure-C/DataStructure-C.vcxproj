@@ -148,10 +148,13 @@
     <ClCompile Include="抽象数据类型实习.c" />
     <ClCompile Include="栈.c" />
     <ClCompile Include="约瑟夫问题.c" />
+    <ClCompile Include="队列1.c" />
+    <ClCompile Include="队列2.cpp" />
     <ClCompile Include="顺序表.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="队列1.h" />
+    <ClInclude Include="队列2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -107,7 +107,7 @@ void Joseph(int n, int m)
 	}
 }
 
-int main(void)
+int main9(void)
 {
 	Joseph(6, 5);//6表示有6个小孩，5表示报数到5出圈一个小孩
 
