@@ -63,6 +63,9 @@
     <ClCompile Include="队列2.cpp">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>源文件\树</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="队列1.h">

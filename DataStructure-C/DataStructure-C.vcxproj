@@ -142,6 +142,7 @@
     <ClCompile Include="KMPAlgorithm_2.c" />
     <ClCompile Include="LinkedList.c" />
     <ClCompile Include="StrOperation.c" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="_ArrayList.c" />
     <ClCompile Include="单向循环链表.c" />
     <ClCompile Include="双向链表.c" />
