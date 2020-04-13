@@ -142,13 +142,16 @@
     <ClCompile Include="KMPAlgorithm_2.c" />
     <ClCompile Include="LinkedList.c" />
     <ClCompile Include="StrOperation.c" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="_ArrayList.c" />
+    <ClCompile Include="二叉树的链式存储.cpp" />
+    <ClCompile Include="二叉树的非递归算法设计.cpp" />
+    <ClCompile Include="二叉树的顺序存储.c" />
     <ClCompile Include="单向循环链表.c" />
     <ClCompile Include="双向链表.c" />
     <ClCompile Include="抽象数据类型实习.c" />
-    <ClCompile Include="栈.c" />
+    <ClCompile Include="栈.cpp" />
     <ClCompile Include="约瑟夫问题.c" />
+    <ClCompile Include="线索二叉树.cpp" />
     <ClCompile Include="队列1.c" />
     <ClCompile Include="队列2.cpp" />
     <ClCompile Include="顺序表.c" />
@@ -156,6 +159,9 @@
   <ItemGroup>
     <ClInclude Include="队列1.h" />
     <ClInclude Include="队列2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="树.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

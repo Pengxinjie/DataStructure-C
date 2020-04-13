@@ -1,9 +1,9 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//#include<stdlib.h>
-//#include<stdbool.h>
-//#include<string.h>
-//
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+#include<string.h>
+
 //typedef char ElementType;
 //
 ////创建结点结构体
@@ -41,11 +41,14 @@
 //}
 //
 ////判空
-//_Bool isEmpty(void) {
+//int isEmpty(void) {
 //	if (g_pHead->pNext == NULL)
 //	{
 //		printf("链表为空！");
-//		return true;
+//		return 1;
+//	}
+//	else {
+//		return 0;
 //	}
 //}
 //
@@ -81,7 +84,7 @@
 //	//头尾清空，下一次才能重新创建链表
 //	g_pHead = NULL;
 //}
-//
+
 //int main1(void)
 //{
 //	//初始化栈
@@ -127,3 +130,72 @@
 //	system("pause");
 //	return 0;
 //}
+
+typedef char ElemType;
+typedef struct node {
+	ElemType data;
+	struct node* next;
+} LinkStack;
+
+void InitStack(LinkStack*& top)
+{
+	top = NULL;
+}
+
+void DestroyStack(LinkStack*& top)
+{
+	LinkStack* pre = top, * p;
+	if (pre == NULL) return; //考虑空栈的情况
+	p = pre->next;
+	while (p != NULL)
+	{
+		free(pre); //释放pre结点
+		pre = p;
+		p = p->next; //pre、p同步后移
+	}
+	free(pre); //释放尾结点
+}
+
+int Push(LinkStack*& top, ElemType x)
+{
+	LinkStack* p;
+	p = (LinkStack*)malloc(sizeof(LinkStack));
+	p->data = x; //创建结点p用于存放x
+	p->next = top; //插入p结点作为栈顶结点
+	top = p;
+	return 1;
+}
+
+int Pop(LinkStack*& top, ElemType& x)
+{
+	LinkStack* p;
+	if (top == NULL) //栈空,下溢出返回0
+		return 0;
+	else //栈不空时出栈元素x并返回1
+	{
+		p = top; //p指向栈顶结点
+		x = p->data; //取栈顶元素x
+		top = p->next; //删除结点p
+		free(p); //释放p结点
+		return 1;
+	}
+}
+
+int GetTop(LinkStack* top, ElemType& x)
+{
+	if (top == NULL) //栈空,下溢出时返回0
+		return 0;
+	else //栈不空,取栈顶元素x并返回1
+	{
+		x = top->data;
+		return 1;
+	}
+}
+
+int StackEmpty(LinkStack* top)
+{
+	if (top == NULL)
+		return 1;
+	else
+		return 0;
+}

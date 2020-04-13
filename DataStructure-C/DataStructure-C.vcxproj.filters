@@ -48,9 +48,6 @@
     <ClCompile Include="LinkedList.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
-    <ClCompile Include="栈.c">
-      <Filter>源文件\线性表</Filter>
-    </ClCompile>
     <ClCompile Include="顺序表.c">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
@@ -63,7 +60,19 @@
     <ClCompile Include="队列2.cpp">
       <Filter>源文件\线性表</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="二叉树的顺序存储.c">
+      <Filter>源文件\树</Filter>
+    </ClCompile>
+    <ClCompile Include="二叉树的链式存储.cpp">
+      <Filter>源文件\树</Filter>
+    </ClCompile>
+    <ClCompile Include="二叉树的非递归算法设计.cpp">
+      <Filter>源文件\树</Filter>
+    </ClCompile>
+    <ClCompile Include="栈.cpp">
+      <Filter>源文件\线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="线索二叉树.cpp">
       <Filter>源文件\树</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,5 +83,10 @@
     <ClInclude Include="队列2.h">
       <Filter>头文件</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="树.md">
+      <Filter>源文件\树</Filter>
+    </None>
   </ItemGroup>
 </Project>
