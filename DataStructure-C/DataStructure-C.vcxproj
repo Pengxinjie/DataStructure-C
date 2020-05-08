@@ -148,6 +148,9 @@
     <ClCompile Include="二叉树的顺序存储.c" />
     <ClCompile Include="单向循环链表.c" />
     <ClCompile Include="双向链表.c" />
+    <ClCompile Include="图的邻接矩阵.cpp" />
+    <ClCompile Include="图的邻接矩阵简洁版.cpp" />
+    <ClCompile Include="图的邻接表表示.cpp" />
     <ClCompile Include="抽象数据类型实习.c" />
     <ClCompile Include="栈.cpp" />
     <ClCompile Include="约瑟夫问题.c" />
