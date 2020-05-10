@@ -87,6 +87,12 @@
     <ClCompile Include="图的邻接表表示.cpp">
       <Filter>源文件\图</Filter>
     </ClCompile>
+    <ClCompile Include="图的遍历.cpp">
+      <Filter>源文件\图</Filter>
+    </ClCompile>
+    <ClCompile Include="图的算法.cpp">
+      <Filter>源文件\图</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="队列1.h">
